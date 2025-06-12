@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Tiger King",
+    "subTitle": "Watch Season 2 Now",
+    "image": "/images/misc/tiger-king.jpg",
+    "alt": "Tiger King on Nepflix",
+    "direction": "row"
+  },
+  {
+    "id": 2,
+    "title": "Money Heist",
+    "subTitle": "Watch Season 5 Now",
+    "image": "/images/misc/money-heist.jpg",
+    "alt": "Money Heist on Nepflix",
+    "direction": "row-reverse"
+  },
+  {
+    "id": 3,
+    "title": "Watch everywhere.",
+    "subTitle": "Stream unlimited films and TV programmes on your phone, tablet, laptop and TV without paying more.",
+    "image": "/images/misc/home-imac.jpg",
+    "alt": "Money Heist on Nepflix",
+    "direction": "row"
+  }
+]
