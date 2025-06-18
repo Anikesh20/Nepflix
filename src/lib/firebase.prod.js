@@ -1,6 +1,6 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
 
 // 1) when seeding the database you'll have to uncomment this!
 // import { seedDatabase } from '../seed';
@@ -15,11 +15,12 @@ const config = {
   measurementId: "G-CSRKRN13P5"
 };
 
-const firebaseApp = initializeApp(config);
-const auth = getAuth(firebaseApp);
-const db = getFirestore(firebaseApp);
+const firebaseApp = firebase.initializeApp(config);
+const auth = firebaseApp.auth();
+const db = firebaseApp.firestore();
+
 // 2) when seeding the database you'll have to uncomment this!
-// seedDatabase(firebaseApp);
+// seedDatabase(firebase);
 // 3) once you have populated the database (only run once!), re-comment this so you don't get duplicate data
 
-export { firebaseApp, auth, db };
+export { firebaseApp as firebase, auth, db };

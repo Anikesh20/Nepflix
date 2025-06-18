@@ -2,6 +2,7 @@
   "name": "nepflix",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "firebase": "^7.19.1",
     "fuse.js": "^6.4.1",
@@ -10,15 +11,14 @@
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.0",
-    "styled-components": "^5.1.1",
-    "serve": "^14.2.1"
+    "styled-components": "^5.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
     "test": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
-    "serve": "serve -s build -l $PORT"
+    "seed": "node --experimental-modules seed-db.js"
   },
   "eslintConfig": {
     "extends": "react-app"

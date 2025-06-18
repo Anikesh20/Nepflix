@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { FirebaseContext } from '../context/firebase';
 import { Loading, Header, Profiles } from '../components';
 import * as ROUTES from '../constants/routes';
-import logo from '../logo.svg';
+import logo from '../image.png';
 
 export function SelectProfileContainer({ user, setProfile }) {
   return (

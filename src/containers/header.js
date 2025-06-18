@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header } from '../components';
 import * as ROUTES from '../constants/routes';
-import logo from '../logo.svg';
+import logo from '../image.png';
 
 export function HeaderContainer({ bg = true, children, ...restProps }) {
   return bg ? (

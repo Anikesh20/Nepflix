@@ -2,11 +2,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import Fuse from 'fuse.js';
 import { Card, Header, Loading, Player } from '../components';
 import * as ROUTES from '../constants/routes';
-import logo from '../logo.svg';
+import logo from '../image.png';
 import { FirebaseContext } from '../context/firebase';
 import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from './footer';
-import { signOut } from 'firebase/auth';
 
 export function BrowseContainer({ slides }) {
   const [category, setCategory] = useState('series');
@@ -15,7 +14,7 @@ export function BrowseContainer({ slides }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [slideRows, setSlideRows] = useState([]);
 
-  const { auth } = useContext(FirebaseContext);
+  const { auth, firebase } = useContext(FirebaseContext);
   const user = auth.currentUser || {};
 
   useEffect(() => {
@@ -25,19 +24,27 @@ export function BrowseContainer({ slides }) {
   }, [profile.displayName]);
 
   useEffect(() => {
-    setSlideRows(slides[category]);
-  }, [slides, category]);
+    if (slides && category) {
+      setSlideRows(slides[category] || []);
+    }
+  }, [slides, category, setSlideRows]);
 
   useEffect(() => {
-    const fuse = new Fuse(slideRows, { keys: ['data.description', 'data.title', 'data.genre'] });
-    const results = fuse.search(searchTerm).map(({ item }) => item);
+    if (slides && category && searchTerm) {
+      const fuse = new Fuse(slides[category] || [], { keys: ['data.description', 'data.title', 'data.genre'] });
+      const results = fuse.search(searchTerm).map(({ item }) => item);
 
-    if (slideRows.length > 0 && searchTerm.length > 3 && results.length > 0) {
-      setSlideRows(results);
-    } else {
-      setSlideRows(slides[category]);
+      if (slides[category]?.length > 0 && searchTerm.length > 3 && results.length > 0) {
+        setSlideRows(results);
+      } else {
+        setSlideRows(slides[category] || []);
+      }
     }
-  }, [searchTerm]);
+  }, [searchTerm, slides, category, setSlideRows]);
+
+  const handleSignOut = () => {
+    firebase.auth().signOut();
+  };
 
   return profile.displayName ? (
     <>
@@ -46,7 +53,7 @@ export function BrowseContainer({ slides }) {
       <Header src="joker1" dontShowOnSmallViewPort>
         <Header.Frame>
           <Header.Group>
-            <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix" />
+            <Header.Logo to={ROUTES.HOME} src={logo} alt="Nepflix" />
             <Header.TextLink active={category === 'series' ? 'true' : 'false'} onClick={() => setCategory('series')}>
               Series
             </Header.TextLink>
@@ -64,7 +71,7 @@ export function BrowseContainer({ slides }) {
                   <Header.TextLink>{user.displayName}</Header.TextLink>
                 </Header.Group>
                 <Header.Group>
-                  <Header.TextLink onClick={() => signOut(auth)}>Sign out</Header.TextLink>
+                  <Header.TextLink onClick={handleSignOut}>Sign out</Header.TextLink>
                 </Header.Group>
               </Header.Dropdown>
             </Header.Profile>

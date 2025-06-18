@@ -8,6 +8,7 @@ export default function selectionFilter({ series, films } = []) {
       { title: 'Feel Good', data: series?.filter((item) => item.genre === 'feel-good') },
     ],
     films: [
+      { title: 'Nepali Movies', data: films?.filter((item) => item.genre === 'nepali') },
       { title: 'Drama', data: films?.filter((item) => item.genre === 'drama') },
       { title: 'Thriller', data: films?.filter((item) => item.genre === 'thriller') },
       { title: 'Children', data: films?.filter((item) => item.genre === 'children') },

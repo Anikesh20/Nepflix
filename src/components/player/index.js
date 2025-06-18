@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { FirebaseContext } from '../../context/firebase';
 import { Header, Loading } from '../../components';
 import * as ROUTES from '../../constants/routes';
-import logo from '../../logo.svg';
+import logo from '../../image.png';
 
 export function PlayerContainer({ children, ...restProps }) {
   const [showPlayer, setShowPlayer] = useState(false);

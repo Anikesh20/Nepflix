@@ -1,6 +1,7 @@
-import { collection, addDoc } from 'firebase/firestore';
+import firebase from 'firebase/app/dist/index.cjs.js';
+import 'firebase/firestore/dist/index.cjs.js';
 
-export async function seedDatabase(db) {
+export async function seedDatabase(firebase) {
   function getUUID() {
     // eslint gets funny about bitwise
     /* eslint-disable */
@@ -12,13 +13,14 @@ export async function seedDatabase(db) {
     /* eslint-enable */
   }
 
-  const seriesCollection = collection(db, 'series');
-  const filmsCollection = collection(db, 'films');
+  const db = firebase.firestore();
+  const seriesCollection = db.collection('series');
+  const filmsCollection = db.collection('films');
 
   /* Series
     ============================================ */
   // Documentaries
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Tiger King',
     description: 'An exploration of big cat breeding and its bizarre underworld, populated by eccentric characters.',
@@ -27,7 +29,7 @@ export async function seedDatabase(db) {
     slug: 'tiger-king',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Amanda Knox',
     description: 'Amanda Marie Knox is an American woman who spent almost four years in an Italian prison.',
@@ -36,7 +38,7 @@ export async function seedDatabase(db) {
     slug: 'amanda-knox',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Citizenfour',
     description:
@@ -46,7 +48,7 @@ export async function seedDatabase(db) {
     slug: 'citizenfour',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Super Size Me',
     description:
@@ -56,7 +58,7 @@ export async function seedDatabase(db) {
     slug: 'super-size-me',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Man on Wire',
     description:
@@ -67,7 +69,7 @@ export async function seedDatabase(db) {
   });
 
   // Comedies
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'The Office',
     description:
@@ -77,7 +79,7 @@ export async function seedDatabase(db) {
     slug: 'the-office',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Arrested Development',
     description:
@@ -87,7 +89,7 @@ export async function seedDatabase(db) {
     slug: 'arrested-development',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Curb Your Enthusiasm',
     description:
@@ -97,7 +99,7 @@ export async function seedDatabase(db) {
     slug: 'curb-your-enthusiasm',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Family Guy',
     description:
@@ -107,7 +109,7 @@ export async function seedDatabase(db) {
     slug: 'family-guy',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'South Park',
     description:
@@ -118,7 +120,7 @@ export async function seedDatabase(db) {
   });
 
   // Children
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Peppa Pig',
     description:
@@ -128,7 +130,7 @@ export async function seedDatabase(db) {
     slug: 'peppa-pig',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Dora The Explorer',
     description:
@@ -138,7 +140,7 @@ export async function seedDatabase(db) {
     slug: 'dora-the-explorer',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'PAW Patrol',
     description:
@@ -148,7 +150,7 @@ export async function seedDatabase(db) {
     slug: 'paw-patrol',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Arthur',
     description:
@@ -158,7 +160,7 @@ export async function seedDatabase(db) {
     slug: 'arthur',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'SpongeBob',
     description:
@@ -169,7 +171,7 @@ export async function seedDatabase(db) {
   });
 
   // Crime
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Making a Murderer',
     description:
@@ -179,7 +181,7 @@ export async function seedDatabase(db) {
     slug: 'making-a-murderer',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Long Shot',
     description:
@@ -189,7 +191,7 @@ export async function seedDatabase(db) {
     slug: 'long-shot',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'The Confession Killer',
     description:
@@ -199,7 +201,7 @@ export async function seedDatabase(db) {
     slug: 'the-confession-killer',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'The Innocent Man',
     description:
@@ -209,7 +211,7 @@ export async function seedDatabase(db) {
     slug: 'the-innocent-man',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'The Staircase',
     description:
@@ -220,7 +222,7 @@ export async function seedDatabase(db) {
   });
 
   // Feel-good
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Good Will Hunting',
     description:
@@ -230,7 +232,7 @@ export async function seedDatabase(db) {
     slug: 'good-will-hunting',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Forrest Gump',
     description:
@@ -240,7 +242,7 @@ export async function seedDatabase(db) {
     slug: 'forrest-gump',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Juno',
     description:
@@ -250,7 +252,7 @@ export async function seedDatabase(db) {
     slug: 'juno',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'Midnight In Paris',
     description:
@@ -260,7 +262,7 @@ export async function seedDatabase(db) {
     slug: 'midnight-in-paris',
   });
 
-  await addDoc(seriesCollection, {
+  await seriesCollection.add({
     id: getUUID(),
     title: 'School of Rock',
     description:
@@ -273,7 +275,7 @@ export async function seedDatabase(db) {
   /* Films
     ============================================ */
   // Drama
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'The Prestige',
     description:
@@ -283,7 +285,7 @@ export async function seedDatabase(db) {
     slug: 'the-prestige',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Fight Club',
     description:
@@ -293,7 +295,7 @@ export async function seedDatabase(db) {
     slug: 'fight-club',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Kings Speech',
     description:
@@ -303,7 +305,7 @@ export async function seedDatabase(db) {
     slug: 'kings-speech',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'The Revenant',
     description:
@@ -313,7 +315,7 @@ export async function seedDatabase(db) {
     slug: 'the-revenant',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'The Social Network',
     description:
@@ -324,7 +326,7 @@ export async function seedDatabase(db) {
   });
 
   // Suspense
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Shutter Island',
     description:
@@ -334,7 +336,7 @@ export async function seedDatabase(db) {
     slug: 'shutter-island',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Gone Girl',
     description:
@@ -344,7 +346,7 @@ export async function seedDatabase(db) {
     slug: 'gone-girl',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Prisoners',
     description:
@@ -354,7 +356,7 @@ export async function seedDatabase(db) {
     slug: 'prisoners',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Seven',
     description:
@@ -364,7 +366,7 @@ export async function seedDatabase(db) {
     slug: 'seven',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Zodiac',
     description:
@@ -375,7 +377,7 @@ export async function seedDatabase(db) {
   });
 
   // Children
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Hotel Transylvania',
     description:
@@ -385,7 +387,7 @@ export async function seedDatabase(db) {
     slug: 'hotel-transylvania',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Despicable Me',
     description:
@@ -395,7 +397,7 @@ export async function seedDatabase(db) {
     slug: 'despicable-me',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Frozen',
     description:
@@ -405,7 +407,7 @@ export async function seedDatabase(db) {
     slug: 'frozen',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Spirited Away',
     description:
@@ -415,7 +417,7 @@ export async function seedDatabase(db) {
     slug: 'spirited-away',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Up',
     description:
@@ -426,7 +428,7 @@ export async function seedDatabase(db) {
   });
 
   // Thriller
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Joker',
     description:
@@ -436,7 +438,7 @@ export async function seedDatabase(db) {
     slug: 'joker',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'A Quiet Place',
     description:
@@ -446,7 +448,7 @@ export async function seedDatabase(db) {
     slug: 'a-quiet-place',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Black Swan',
     description:
@@ -456,7 +458,7 @@ export async function seedDatabase(db) {
     slug: 'black-swan',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Nightcrawler',
     description:
@@ -466,7 +468,7 @@ export async function seedDatabase(db) {
     slug: 'nightcrawler',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'The Silence of The Lambs',
     description:
@@ -477,7 +479,7 @@ export async function seedDatabase(db) {
   });
 
   // Romance
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'A Star Is Born',
     description:
@@ -487,7 +489,7 @@ export async function seedDatabase(db) {
     slug: 'a-star-is-born',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Blue Valentine',
     description:
@@ -497,7 +499,7 @@ export async function seedDatabase(db) {
     slug: 'blue-valentine',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'La La Land',
     description:
@@ -507,7 +509,7 @@ export async function seedDatabase(db) {
     slug: 'la-la-land',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'The Notebook',
     description:
@@ -517,7 +519,7 @@ export async function seedDatabase(db) {
     slug: 'the-notebook',
   });
 
-  await addDoc(filmsCollection, {
+  await filmsCollection.add({
     id: getUUID(),
     title: 'Titanic',
     description:
@@ -525,5 +527,56 @@ export async function seedDatabase(db) {
     genre: 'romance',
     maturity: '15',
     slug: 'titanic',
+  });
+
+  // Nepali Movies
+  await filmsCollection.add({
+    id: getUUID(),
+    title: 'Loot',
+    description:
+      'A comedy film about a group of friends who plan a heist to solve their financial problems, leading to hilarious situations and unexpected outcomes.',
+    genre: 'nepali',
+    maturity: '12',
+    slug: 'loot',
+  });
+
+  await filmsCollection.add({
+    id: getUUID(),
+    title: 'Pashupati Prasad',
+    description:
+      'A heartwarming story of a young man who moves to Kathmandu in search of a better life, facing various challenges while trying to make ends meet.',
+    genre: 'nepali',
+    maturity: '12',
+    slug: 'pashupati-prasad',
+  });
+
+  await filmsCollection.add({
+    id: getUUID(),
+    title: 'Timi Sanga',
+    description:
+      'A romantic drama that explores the complexities of relationships and love in modern Nepal, following the journey of two young people from different backgrounds.',
+    genre: 'nepali',
+    maturity: '12',
+    slug: 'timi-sanga',
+  });
+
+  await filmsCollection.add({
+    id: getUUID(),
+    title: 'Chhakka Panja',
+    description:
+      'A comedy film that tackles social issues through humor, following the story of a group of friends who get involved in various misadventures.',
+    genre: 'nepali',
+    maturity: '12',
+    slug: 'chhakka-panja',
+  });
+
+  await filmsCollection.add({
+    id: getUUID(),
+    title: 'Kalo Pothi',
+    description:
+      'Set during the Nepalese Civil War, this film tells the story of two young boys and their pet rooster, exploring themes of friendship and innocence during conflict.',
+    genre: 'nepali',
+    maturity: '12',
+    slug: 'kalo-pothi',
   });
 }
